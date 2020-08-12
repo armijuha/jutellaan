@@ -1,2 +1,17 @@
-Sovellukseen rekisteröityneitä käyttäjiä {{count}}
+{% extends "layout.html" %}
+{% block title %}Etusivu{% endblock %}
+{% block content %}
+<h2>Etusivu</h2>
+Tervetuloa keskustelusovellukseen!
+{% if session.user_id %}
+Olet kirjautunut sisään.
+<a href="/logout">Kirjaudu ulos</a>
+{% else %}
+<a href="/login">Kirjaudu sisään</a>
+{% endif %}
+<p>
+<h2>Keskustelualueet</h2>
 
+Sovellukseen rekisteröityneitä käyttäjiä {{count}}.
+
+{% endblock %}
