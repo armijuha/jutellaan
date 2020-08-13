@@ -1,17 +1,26 @@
+<!doctype html>
+<!index.html>
+
 {% extends "layout.html" %}
 {% block title %}Etusivu{% endblock %}
 {% block content %}
 <h2>Etusivu</h2>
 Tervetuloa keskustelusovellukseen!
 {% if session.user_id %}
-Olet kirjautunut sisään.
+Olet kirjautuneena sisään.
+Sovellukseen rekisteröityneitä käyttäjiä {{count}}.
+
 <a href="/logout">Kirjaudu ulos</a>
 {% else %}
 <a href="/login">Kirjaudu sisään</a>
 {% endif %}
-<p>
+<hr>
 <h2>Keskustelualueet</h2>
-
-Sovellukseen rekisteröityneitä käyttäjiä {{count}}.
+{% for category in list %}
+<h3> {{ category[0] }} </h3>
+<p>
+{{ category[1] }}
+<hr>
+{% endfor %}
 
 {% endblock %}

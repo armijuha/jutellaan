@@ -1,3 +1,12 @@
+<!login.html>
+<!doctype html>
+
+{% extends "layout.html" %}
+{% block title %}Kirjautuminen{% endblock %}
+{% block content %}
+<h2>Kirjautuminen</h2><br>
+Kirjaudu sisään keskustelusovellukseen.
+<p>
 <form action="/login" method="post">
 Tunnus: <input type="text" name="name">
 <p>
@@ -5,4 +14,8 @@ Salasana: <input type="password" name="password">
 <p>
 <input type="submit" value="Kirjaudu">
 </form>
+<p>
 Jos sinulla ei ole tunnusta, voit luoda uuden tunnuksen <a href="/register">tästä</a>
+
+{% endblock %}
+

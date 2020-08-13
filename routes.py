@@ -1,11 +1,13 @@
 from app import app
 import users
+import categories
 from flask import render_template, redirect, request
 
 @app.route("/")
 def index():
+    list = categories.get_list()
     count = users.get_counter()
-    return render_template("index.html", count=count)
+    return render_template("index.html", list=list, count=count)
 
 @app.route("/login", methods=["get","post"])
 def login():
@@ -17,7 +19,7 @@ def login():
         if users.login(name,password):
             return redirect("/")
         else:
-            return render_template("error.html",message="Väärä tunnus tai salasana")
+            return render_template("error.html",message="Väärä tunnus tai salasana, yritä uudestaan")
 
 @app.route("/logout")
 def logout():
@@ -34,4 +36,4 @@ def register():
         if users.register(name,password):
             return redirect("/")
         else:
-            return render_template("error.html",message="Rekisteröinti epäonnistui")
+            return render_template("error.html",message="Rekisteröinti epäonnistui, kokeile uudestaan toisella nimellä")
