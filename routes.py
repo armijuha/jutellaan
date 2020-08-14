@@ -1,6 +1,7 @@
 from app import app
 import users
 import categories
+import threads
 from flask import render_template, redirect, request
 
 @app.route("/")
@@ -37,3 +38,9 @@ def register():
             return redirect("/")
         else:
             return render_template("error.html",message="Rekisteröinti epäonnistui, kokeile uudestaan toisella nimellä")
+
+@app.route("/<int:id>")
+def thread(id):
+    thread_name = categories.get_name(id)
+    list = threads.get_list(id)
+    return render_template("threads.html", thread_name=thread_name, list=list)

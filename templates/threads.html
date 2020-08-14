@@ -1,0 +1,15 @@
+<!doctype html>
+<!threads.html>
+
+{% extends "layout.html" %}
+{% block title %}Keskustelulangat alueella{% endblock %}
+
+{% block content %}
+<h2>Keskustelulangat alueella: {{thread_name}}</h2>	
+{% for thread in list %}
+<hr>
+<h3>{{ thread[1] }}</h3>
+
+{% endfor %}
+{% endblock %}
+

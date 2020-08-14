@@ -17,9 +17,9 @@ Sovellukseen rekisteröityneitä käyttäjiä {{count}}.
 <hr>
 <h2>Keskustelualueet</h2>
 {% for category in list %}
-<h3> {{ category[0] }} </h3>
+<h3><a href="/{{ category[0] }}">{{ category[1] }}</a></h3>
 <p>
-{{ category[1] }}
+{{ category[2] }}
 <hr>
 {% endfor %}
 
