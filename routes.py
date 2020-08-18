@@ -2,6 +2,7 @@ from app import app
 import users
 import categories
 import threads
+import messages
 from flask import render_template, redirect, request
 
 @app.route("/")
@@ -39,8 +40,29 @@ def register():
         else:
             return render_template("error.html",message="Rekisteröinti epäonnistui, kokeile uudestaan toisella nimellä")
 
-@app.route("/<int:id>")
+@app.route("/<int:id>", methods=["GET", "POST"])
 def thread(id):
-    thread_name = categories.get_name(id)
-    list = threads.get_list(id)
-    return render_template("threads.html", thread_name=thread_name, list=list)
+    if request.method == "GET":
+        category_name = categories.get_name(id)
+        list = threads.get_list(id)
+        return render_template("threads.html", category_name=category_name, list=list)
+    if request.method == "POST":
+        thread_name = request.form["thread_name"]
+        if threads.send(thread_name, id):
+            return redirect("/")
+        else:
+            return render_template("error.html", message="Keskustelun avaaminen ei onnistunut, tarkista oletko kirjautuneena sisään tai onko saman niminen keskustelu jo olemassa.")
+
+@app.route("/<int:category_id>/<int:thread_id>", methods=["GET", "POST"])
+def message(category_id, thread_id):
+    if request.method == "GET":
+        category_name = categories.get_name(category_id)
+        thread_name = threads.get_name(thread_id)
+        list = messages.get_list(category_id, thread_id)
+        return render_template("messages.html", category_name=category_name, thread_name=thread_name, list=list)
+    if request.method == "POST":
+        content = request.form["content"]
+        if messages.send(content, category_id, thread_id):
+            return redirect("/")
+        else:
+            return render_template("error.html", message="Viestin lähetys ei onnistunut, tarkista oletko kirjautunut sisään.")

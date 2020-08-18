@@ -1,0 +1,26 @@
+<!doctype html>
+<!messages.html>
+
+{% extends "layout.html" %}
+{% block title %}Viestit aiheesta {{thread_name}} {% endblock %}
+
+{% block content %}
+
+<h2>Keskustelualue: {{category_name}} <p> Viestit aiheesta: {{thread_name}}</h2>
+{% for message in list %}
+<hr>
+<b>Kirjoittaja:{{message[1]}} </b><p>
+<b>Aika:</b> {{message[2]}} <p>
+<b>Viesti:</b><br> {{ message[0] }}
+
+{% endfor %}
+<hr>
+<form method="POST">
+Kirjoita oma viestisi tähän ketjuun:
+<input type="text" name="content">
+<br>
+<input type="submit" value="Lähetä">
+</form>
+{% endblock %}
+
+

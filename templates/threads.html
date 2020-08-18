@@ -2,14 +2,22 @@
 <!threads.html>
 
 {% extends "layout.html" %}
-{% block title %}Keskustelulangat alueella{% endblock %}
+{% block title %}Keskustelulangat alueella {{category_name}}{% endblock %}
 
 {% block content %}
-<h2>Keskustelulangat alueella: {{thread_name}}</h2>	
-{% for thread in list %}
+<h2>Keskustelulangat alueella: {{category_name}}</h2>	
 <hr>
-<h3>{{ thread[1] }}</h3>
+{% for thread in list %}
+<h3><a href="/{{thread[2]}}/{{ thread[0] }}">{{ thread[1] }}</a></h3>
 
 {% endfor %}
+<hr>
+<form method="POST">
+Avaa uusi keskustelu antamalla otsikko tähän:
+<input type="text" name="thread_name">
+<br>
+<input type="submit" value="Lähetä">
+</form>
+
 {% endblock %}
 
