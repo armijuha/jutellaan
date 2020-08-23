@@ -1,4 +1,5 @@
 CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT UNIQUE, password TEXT, type INTEGER);
+INSERT INTO users (id, name, password, type) VALUES (1, 'Cicero', 'pisero', 3);
 
 CREATE TABLE categories (id SERIAL PRIMARY KEY, name TEXT UNIQUE, description TEXT, type INTEGER);
 INSERT INTO categories (name, description, type) VALUES ('Turhat turinat', 'kaikkien kirjautuneiden käyttäjien oma turinointitupa', 3);

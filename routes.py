@@ -59,10 +59,31 @@ def message(category_id, thread_id):
         category_name = categories.get_name(category_id)
         thread_name = threads.get_name(thread_id)
         list = messages.get_list(category_id, thread_id)
-        return render_template("messages.html", category_name=category_name, thread_name=thread_name, list=list)
+        return render_template("messages.html", category_name=category_name, thread_name=thread_name, list=list, category_id=category_id, thread_id=thread_id)
     if request.method == "POST":
         content = request.form["content"]
         if messages.send(content, category_id, thread_id):
             return redirect("/")
         else:
             return render_template("error.html", message="Viestin lähetys ei onnistunut, tarkista oletko kirjautunut sisään.")
+
+@app.route("/<int:category_id>/<int:thread_id>/<int:message_id>", methods=["GET", "POST"])
+def edit_message(category_id, thread_id, message_id):
+    if request.method == "GET":
+        content = messages.get_one(message_id)
+        return render_template("edit_message.html", content=content)
+    if request.method == "POST":
+        choice = request.form["edit"]
+        new_content = request.form["content"]
+        if choice == "1":
+            if messages.hide(message_id):
+                return redirect("/")
+            else:
+                return render_template("error.html", message = "Vain viestin lähettäjä voi muokata viestiä")
+        if choice == "2":
+            if messages.edit(message_id, new_content):
+                return redirect("/")
+            else:
+                return render_template("error.html", message = "Vain viestin lähettäjä voi muokata viestiä")
+        return redirect("/")
+
