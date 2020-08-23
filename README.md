@@ -15,6 +15,6 @@ En ole ponnisteluista huolimatta vieläkään saanut tietokantaa toimimaan yhtee
 
 Tilanne 23.8.
 Sovellusta voi testata uudessa osoitteessa: https://jutellaan.herokuapp.com/ .
-Aloitettu kokonaan alusta ja tehty sovellus uuteen hakemistoon, uusi git repositio ja uusi heroku. Nyt homma toimii melko hyvin ja kaikki tarvittavat tietokannat on olemassa. Sovellukseen voi kirjautua, aloittaa uusia ketjuja ja kirjoittaa viestejä. Omalla koneella onnistuu nyt myös viestien poisto ja editointi, mutta jostain syystä se ei näyttäisi toimivan herokussa. Tämän lisäksi viimeisen viikon aikana pitäisi vielä lisätä toiminnallisuus adminien ja salaiselle alueelle pääsevien käyttäjien erottelemiseksi normaalikäyttäjistä sekä parantaa ulkoasua ja käytettävyyttä jos vain aika antaa myöden.
+Aloitettu kokonaan alusta ja tehty sovellus uuteen hakemistoon, uusi git repositio ja uusi heroku. Nyt homma toimii melko hyvin ja kaikki tarvittavat tietokannat on olemassa. Sovellukseen voi kirjautua, aloittaa uusia ketjuja ja kirjoittaa viestejä. Nyt myös omien viestien poisto ja editointi onnistuu. Viimeisen viikon aikana pitäisi vielä lisätä toiminnallisuus adminien ja salaiselle alueelle pääsevien käyttäjien erottelemiseksi normaalikäyttäjistä sekä parantaa ulkoasua ja käytettävyyttä jos vain aika antaa myöden.
 
 
