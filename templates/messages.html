@@ -12,13 +12,15 @@
 <b>Kirjoittaja:{{message[1]}} </b><p>
 <b>Aika:</b> {{message[2]}} <p>
 <b>Viesti:</b><br> {{ message[0] }}
-
+<p>
+Käyttäjä voi editoida tai poistaa oman viestinsä painamalla <a href="/{{category_id}}/{{thread_id}}/{{ message[3] }}">tästä</a>
 {% endfor %}
 <hr>
 <form method="POST">
 Kirjoita oma viestisi tähän ketjuun:
-<input type="text" name="content">
-<br>
+<p>
+<textarea name="content" rows="5" cols="50"></textarea>
+<p>
 <input type="submit" value="Lähetä">
 </form>
 {% endblock %}

@@ -1,0 +1,23 @@
+<!doctype html>
+<!messages.html>
+
+{% extends "layout.html" %}
+{% block title %}Poista tai editoi viestiä {% endblock %}
+
+{% block content %}
+<p>
+{{content}}
+<p>
+<form method="POST">
+Haluatko varmasti poistaa tai muokata viestiäsi?:
+<p>
+<input type="radio" name="edit" value="1"> Kyllä, poista viesti
+<input type="radio" name="edit" value="2"> Muokkaa viestiä alla olevaan kenttään
+<input type="radio" name="edit" value="3"> Peruuta, jätä viesti ennalleen
+<p>
+<textarea name="content" rows="5" cols="50"></textarea>
+<p>
+<input type="submit" value="Lähetä">
+</form>
+{% endblock %}
+
