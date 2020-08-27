@@ -1,6 +1,7 @@
 from db import db
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
+import os
 
 def get_counter():
     result = db.session.execute("SELECT COUNT(*) FROM users")
@@ -16,19 +17,23 @@ def login(name,password):
     else:
         if check_password_hash(user[0],password):
             session["user_id"] = user[1]
+            session["username"] = name
+            session["csrf_token"] = os.urandom(16).hex()
             return True
         else:
             return False
 
 def logout():
     del session["user_id"]
+    del session["username"]
 
 def register(name,password):
+    if len(name) < 3 or len(name) > 20:
+        return False
     hash_value = generate_password_hash(password)
-    type = 1
     try:
-        sql = "INSERT INTO users (name,password,type) VALUES (:name,:password,:type)"
-        db.session.execute(sql, {"name":name,"password":hash_value,"type":type})
+        sql = "INSERT INTO users (name,password,type) VALUES (:name,:password, '1')"
+        db.session.execute(sql, {"name":name,"password":hash_value})
         db.session.commit()
     except:
         return False

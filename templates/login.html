@@ -4,7 +4,12 @@
 {% extends "layout.html" %}
 {% block title %}Kirjautuminen{% endblock %}
 {% block content %}
-<h2>Kirjautuminen</h2><br>
+<h3>Kirjautuminen</h3><br>
+<p>
+{% if session.username %}
+<p>Olet kirjautunut nimellä {{session.username}}</p>
+<a href="/logout"> Kirjaudu ulos</a>
+{% else %}
 Kirjaudu sisään keskustelusovellukseen.
 <p>
 <form action="/login" method="post">
@@ -16,6 +21,9 @@ Salasana: <input type="password" name="password">
 </form>
 <p>
 Jos sinulla ei ole tunnusta, voit luoda uuden tunnuksen <a href="/register">tästä</a>
+
+{% endif %}
+
 
 {% endblock %}
 

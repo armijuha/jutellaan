@@ -5,10 +5,9 @@
 {% block title %}Etusivu{% endblock %}
 {% block content %}
 <h2>Etusivu</h2>
-Tervetuloa keskustelusovellukseen!
+Tervetuloa keskustelusovellukseen!<br>
 {% if session.user_id %}
-Olet kirjautuneena sisään.
-Sovellukseen rekisteröityneitä käyttäjiä {{count}}.
+Olet kirjautuneena sisään nimellä {{ session.username }}. <br>
 
 <a href="/logout">Kirjaudu ulos</a>
 {% else %}
@@ -22,5 +21,7 @@ Sovellukseen rekisteröityneitä käyttäjiä {{count}}.
 {{ category[2] }}
 <hr>
 {% endfor %}
+Sovellukseen rekisteröityneitä käyttäjiä {{count_users}}.<br>
+Viestejä yhteensä {{count_messages}}.
 
 {% endblock %}

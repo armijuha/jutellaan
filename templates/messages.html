@@ -16,13 +16,16 @@
 Käyttäjä voi editoida tai poistaa oman viestinsä painamalla <a href="/{{category_id}}/{{thread_id}}/{{ message[3] }}">tästä</a>
 {% endfor %}
 <hr>
+{% if session.username %}
 <form method="POST">
 Kirjoita oma viestisi tähän ketjuun:
 <p>
 <textarea name="content" rows="5" cols="50"></textarea>
 <p>
 <input type="submit" value="Lähetä">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
+{% endif %}
 {% endblock %}
 
 
