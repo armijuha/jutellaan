@@ -1,0 +1,26 @@
+body {
+    margin: auto;
+    max-width: 45em;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+
+}
+
+nav li {
+    display: inline-block;
+    padding: .5em;
+    background: yellow;
+    color: white;
+    border-radius: .5em;
+    margin: .2em;
+}
+
+.header {
+    color: white;
+    text-align: center;
+    background: blue;
+    font-weight: bold;
+    padding: 1em 1em;
+    font-size: 2em;
+    border-radius: .2em;
+    
+}

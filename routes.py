@@ -75,7 +75,7 @@ def message(category_id, thread_id):
             return redirect(request.url)
         else:
             return render_template("error.html", message="Viestin lähetys ei onnistunut, "\
-            "tarkista oletko kirjautunut sisään.")
+            "tarkista oletko kirjautunut sisään ja ettei viestisi ole yli 5000 merkkiä pitkä.")
 
 @app.route("/<int:category_id>/<int:thread_id>/<int:message_id>", methods=["GET", "POST"])
 def edit_message(category_id, thread_id, message_id):
@@ -85,17 +85,22 @@ def edit_message(category_id, thread_id, message_id):
     if request.method == "POST":
         if session["csrf_token"] != request.form["csrf_token"]:
             abort(403)
-        choice = request.form["edit"]
+        choice = "3"
+        if request.form["edit"]:
+           choice = request.form["edit"]
         new_content = request.form["content"]
         if choice == "1":
             if messages.hide(message_id):
                 return redirect(url_for('message', category_id=category_id, thread_id=thread_id))
             else:
-                return render_template("error.html", message="Vain viestin lähettäjä voi muokata viestiä")
+                return render_template("error.html", message="Vain viestin lähettäjä voi muokata "\
+                "viestiä")
         if choice == "2":
             if messages.edit(message_id, new_content):
                 return redirect(url_for('message', category_id=category_id, thread_id=thread_id))
             else:
-                return render_template("error.html", message="Vain viestin lähettäjä voi muokata viestiä")
+                return render_template("error.html", message="Vain viestin lähettäjä voi muokata "\
+                "viestiä, ja viestin maksimipituus on 5000 merkkiä")
+
         return redirect(url_for('message', category_id=category_id, thread_id=thread_id))
 

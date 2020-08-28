@@ -1,14 +1,25 @@
 <!layout.html>
 <!doctype html>
+<link rel="stylesheet" href="/static/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Jutellaan - {% block title %}{% endblock %}</title>
-<h1>Jutellaan keskusteluforum</h1>
-<a href="/"> Forumin etusivu </a><br>
-<a href="/login"> Kirjautuminen sisään </a><br>
-<a href="/logout"> Kirjautuminen ulos </a><br>
-<a href="/register"> Rekisteröityminen uusille käyttäjille </a>
-<hr>
-{% block content %}{% endblock %}
-<hr>
+
+<body>
+<div class="header">
+  <h1>Jutellaan keskusteluforum</h1>
+</div>
+  <nav>
+    <ul>
+      <li><a href="/"> Etusivu </a></li>
+      <li><a href="/login"> Kirjautuminen sisään </a></li>
+      <li><a href="/logout"> Kirjautuminen ulos </a></li>
+      <li><a href="/register"> Rekisteröityminen  </a></li>
+    </ul>
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+  <hr>
+</body>
 
 

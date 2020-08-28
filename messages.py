@@ -15,7 +15,7 @@ def get_list(category_id, thread_id):
 
 def send(content, category_id, thread_id):
     user_id = users.user_id()
-    if user_id == 0:
+    if user_id == 0 or len(content) > 5000:
         return False
     sql = "INSERT INTO messages(content, category_id, thread_id, user_id, time, visibility) "\
     "VALUES (:content, :category_id, :thread_id, :user_id, NOW(), True)"
@@ -47,7 +47,7 @@ def edit(id, content):
     sql = "SELECT user_id FROM messages WHERE id=:id"
     result = db.session.execute(sql, {"id":id})
     message_user_id = result.fetchone()[0]
-    if user_id == message_user_id:
+    if user_id == message_user_id and len(content) < 5000:
         sql = "UPDATE messages SET content=:content WHERE id=:id" 
         result = db.session.execute(sql, {"id":id, "content":content})
         db.session.commit()
