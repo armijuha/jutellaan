@@ -1,20 +1,12 @@
-# jutellaan
-Keskustelusovellus
+# Jutellaan
+Keskustelusovellus, jota voi testata osoitteessa  https://jutellaan.herokuapp.com/ .
 
-    Keskustelut on jaettu alueisiin, joilla on viestejä sisältäviä viestiketjuja
-    Käyttäjä voi olla peruskäyttäjä tai ylläpitäjä
-    Käyttäjä voi luoda tunnuksen, lähettää viestejä ja luoda uusia ketjuja
-    Käyttäjä pystyy muokkaamaan viestiä ja poistamaan sen myöhemmin
-    Viestejä voi etsiä hakutoiminnolla
-    Keskusteluun voi luoda salaisen alueen, jolle on pääsy vain tietyillä käyttäjillä
+-Sovellukseen voi rekisteröityä nimellä ja salasanalla, nimessä täytyy olla 3-20 merkkiä
+-Rekisteröityneet käyttäjät voivat kirjautua sisään sovellukseen
+-Keskustelut on jaettu alueisiin, joilla on viestejä sisältäviä viestiketjuja
+-Sisäänkirjautuneet käyttäjät voivat aloittaa viestiketjuja ja lähettää viestejä
+-Omaa viestiään voi muokata tai poistaa myöhemmin, mutta muiden viestejä ei
+-Kaikilla on toistaiseksi pääsy kaikille alueille. Käyttäjillä ja aluille on tietokannassa tyypit joiden perusteella voitaisiin rajata pääsyä salaiselle ja adminien alueelle, mutta tätä toiminnallisuutta ei ole ehditty toteuttaa.
 
-Tilanne 9.8.
-Alustavia web-sivuja voi testata osoitteessa https://keskustelusovellus.herokuapp.com/ .
-Tietokantoja on tehty vasta 1 (users) joten toistaiseksi on mahdollista vain käydä eri sivuilla ja lisätä käyttäjiä sovellukseen.
-En ole ponnisteluista huolimatta vieläkään saanut tietokantaa toimimaan yhteen muun koodin kanssa omalla koneella (kumpikin toimii kyllä erikseen) mutta onneksi Herokussa tämä näyttääkin yllättäen toimivan ihan hienosti joten jatkan kehitystä siltä pohjalta.
-
-Tilanne 23.8.
-Sovellusta voi testata uudessa osoitteessa: https://jutellaan.herokuapp.com/ .
-Aloitettu kokonaan alusta ja tehty sovellus uuteen hakemistoon, uusi git repositio ja uusi heroku. Nyt homma toimii melko hyvin ja kaikki tarvittavat tietokannat on olemassa. Sovellukseen voi kirjautua, aloittaa uusia ketjuja ja kirjoittaa viestejä. Nyt myös omien viestien poisto ja editointi onnistuu. Viimeisen viikon aikana pitäisi vielä lisätä toiminnallisuus adminien ja salaiselle alueelle pääsevien käyttäjien erottelemiseksi normaalikäyttäjistä sekä parantaa ulkoasua ja käytettävyyttä jos vain aika antaa myöden.
 
 
